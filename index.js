@@ -38,6 +38,18 @@ buttonA.width = "100";
 buttonA.style.marginLeft = "-15px";
 buttonA.style.marginTop = "100px";
 
+let audio_kick_trap = new Audio('kick_trap.wav');
+
+
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'a' || event.key === 'A') {
+        audio_kick_trap.play();
+    }
+  });
+
+
+
+
 
 
 
@@ -59,6 +71,15 @@ imgDiv.appendChild(buttonD);
 buttonD.width = "100";
 buttonD.style.marginLeft = "50px";
 buttonD.style.marginTop = "100px";
+
+let audio_snare_trap = new Audio('snare_trap.wav');
+
+
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'd' || event.key === 'D') {
+        audio_snare_trap.play();
+    }
+  });
 
 
 
@@ -82,6 +103,16 @@ buttonG.width = "100";
 buttonG.style.marginLeft = "50px";
 buttonG.style.marginTop = "100px";
 
+let audio_hihat_trap = new Audio('hihat_trap.wav');
+
+
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'g' || event.key === 'G') {
+        audio_hihat_trap.play();
+    }
+  });
+
+
 
 
 
@@ -103,3 +134,12 @@ imgDiv.appendChild(buttonJ);
 buttonJ.width = "100";
 buttonJ.style.marginLeft = "50px";
 buttonJ.style.marginTop = "100px";
+
+let audio_crash_trap = new Audio('crash_trap.wav');
+
+
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'j' || event.key === 'J') {
+        audio_crash_trap.play();
+    }
+  });
