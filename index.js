@@ -9,6 +9,68 @@ startMenu.style.width = "20%";
 startMenu.classList.add("center");
 startMenu.style.marginTop = "20%";
 
+//DRAG & DROP
+
+/* let trapDiv = document.createElement("div");
+let rockDiv = document.createElement("div");
+let caribbeanDiv = document.createElement("div");
+
+let selectedGenreDiv = document.createElement("div");
+
+trapDiv.setAttribute("draggable", "true");
+trapDiv.setAttribute("ondragstart", dragstart_handler(event));
+
+rockDiv.setAttribute("draggable", "true");
+rockDiv.setAttribute("ondragstart", dragstart_handler(event));
+
+caribbeanDiv.setAttribute("draggable", "true");
+caribbeanDiv.setAttribute("ondragstart", dragstart_handler(event));
+
+selectedGenreDiv.setAttribute("ondrop", drop_handler(event));
+selectedGenreDiv.setAttribute("ondragover", dragover_handler(event));
+
+document.body.appendChild(selectedGenreDiv);
+
+document.body.appendChild(trapDiv);
+document.body.appendChild(rockDiv);
+document.body.appendChild(caribbeanDiv);
+
+function dragstart_handler(ev) {
+  console.log("dragStart");
+  ev.currentTarget.style.border = "dashed";
+  ev.dataTransfer.setData("text", ev.target.id);
+  ev.effectAllowed = "copyMove";
+}
+
+function dragover_handler(ev) {
+  console.log("dragOver");
+  ev.currentTarget.style.background = "lightblue";
+  ev.preventDefault();
+}
+
+function drop_handler(ev) {
+  console.log("Drop");
+  ev.preventDefault();
+  var id = ev.dataTransfer.getData("text");
+  if (id == "src_move" && ev.target.id == "dest_move")
+    ev.target.appendChild(document.getElementById(id));
+
+  if (id == "src_copy" && ev.target.id == "dest_copy") {
+    var nodeCopy = document.getElementById(id).cloneNode(true);
+    nodeCopy.id = "newId";
+    ev.target.appendChild(nodeCopy);
+  }
+}
+
+function dragend_handler(ev) {
+  console.log("dragEnd");
+  // Restore source's border
+  ev.target.style.border = "solid black";
+  // Remove all of the drag data
+  ev.dataTransfer.clearData();
+}
+ */
+
 //DRUM SAMPLES & STYLES
 
 let audio_kick = new Audio("kick_trap.wav");
