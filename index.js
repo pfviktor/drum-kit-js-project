@@ -20,6 +20,20 @@ const textDiv = document.createElement("div");
 document.body.appendChild(textDiv);
 textDiv.style.textAlign = "center";
 
+//ANIMATION
+
+const animationContainer = document.createElement('div'); 
+animationContainer.classList.add('container');
+document.body.appendChild(animationContainer);
+
+const gifDrumkit= document.createElement("img");
+gifDrumkit.src = "drumgif.gif";
+animationContainer.appendChild(gifDrumkit);
+gifDrumkit.classList.add("center")
+gifDrumkit.style.marginTop = "300px";
+
+
+
 
 //BUTTON A - KICK
 
@@ -40,11 +54,30 @@ buttonA.style.marginTop = "100px";
 
 let audio_kick_trap = new Audio('kick_trap.wav');
 
+let guitar_sample = new Audio('guitar_sample.wav');
 
+let kickScore = 0;
+
+//KEYDOWN EVENT
 document.addEventListener('keydown', function(event) {
+    kickScore = kickScore + 1;
     if (event.key === 'a' || event.key === 'A') {
         audio_kick_trap.play();
-    }
+    } /* if (kickScore === 9) {
+        guitar_sample.play();
+        const guitarUpdate = document.createElement("h3");
+        guitarUpdate.innerHTML = "GUITAR RIFF UNLOCKED"
+        document.body.appendChild(guitarUpdate);
+        guitarUpdate.style.textAlign = "center"
+        guitarUpdate.style.fontSize = "xx-large";
+        guitarUpdate.style.marginTop = "200px";
+
+
+    } */
+    //ANIMATION CONTROL
+
+
+
   });
 
 
@@ -74,7 +107,7 @@ buttonD.style.marginTop = "100px";
 
 let audio_snare_trap = new Audio('snare_trap.wav');
 
-
+//KEYDOWN EVENT
 document.addEventListener('keydown', function(event) {
     if (event.key === 'd' || event.key === 'D') {
         audio_snare_trap.play();
@@ -105,7 +138,7 @@ buttonG.style.marginTop = "100px";
 
 let audio_hihat_trap = new Audio('hihat_trap.wav');
 
-
+//KEYDOWN EVENT
 document.addEventListener('keydown', function(event) {
     if (event.key === 'g' || event.key === 'G') {
         audio_hihat_trap.play();
@@ -137,7 +170,7 @@ buttonJ.style.marginTop = "100px";
 
 let audio_crash_trap = new Audio('crash_trap.wav');
 
-
+//KEYDOWN EVENT
 document.addEventListener('keydown', function(event) {
     if (event.key === 'j' || event.key === 'J') {
         audio_crash_trap.play();
