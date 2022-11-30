@@ -1,6 +1,30 @@
+//START MENU
+const startDiv = document.createElement("div");
+document.body.appendChild(startDiv);
+
+
+const startMenu = document.createElement("img");
+startMenu.src = "startMenuButton.png";
+startDiv.appendChild(startMenu);
+startMenu.style.width = "20%";
+startMenu.classList.add("center");
+startMenu.style.marginTop = "20%"
+
+startMenu.addEventListener("click", () =>{
+let openingFill = new Audio('openingfill.wav');
+openingFill.play();
+document.body.removeChild(startDiv);
+
+
+
+
+
+
 //DIV ELEMENT
 const divElement = document.createElement("div");
 document.body.appendChild(divElement);
+
+
 
 
 //H1 ELEMENT
@@ -242,3 +266,10 @@ document.addEventListener('keydown', function(event) {
         bongoGifOn();
     }
   });
+
+
+
+});  
+
+
+  
