@@ -12,25 +12,58 @@ h1Title.style.fontSize = "xxx-large";
 
 //FOUR BUTTONS
 
+
 const imgDiv = document.createElement("div");
 document.body.appendChild(imgDiv);
-imgDiv.style.textAlign = "center";
+imgDiv.style.marginLeft = "600px"
 
 const textDiv = document.createElement("div");
 document.body.appendChild(textDiv);
 textDiv.style.textAlign = "center";
+textDiv.style.marginLeft = "25px"
+
 
 //ANIMATION
 
-const animationContainer = document.createElement('div'); 
-animationContainer.classList.add('container');
-document.body.appendChild(animationContainer);
+const animationContainerKit = document.createElement('div'); 
+animationContainerKit.classList.add('container');
+//ocument.body.appendChild(animationContainerKit);
+
+const animationContainerStick = document.createElement('div'); 
+animationContainerStick.classList.add('container');
+//document.body.appendChild(animationContainerStick);
+
+const animationContainerBongo = document.createElement('div'); 
+animationContainerBongo.classList.add('container');
+//document.body.appendChild(animationContainerBongo);
+
+//DRUMKIT
 
 const gifDrumkit= document.createElement("img");
 gifDrumkit.src = "drumgif.gif";
-animationContainer.appendChild(gifDrumkit);
+animationContainerKit.appendChild(gifDrumkit);
 gifDrumkit.classList.add("center")
-gifDrumkit.style.marginTop = "300px";
+gifDrumkit.style.marginTop = "100px";
+
+
+//DRUMSTICK
+
+const gifDrumStick= document.createElement("img");
+gifDrumStick.src = "bongogif.gif";
+animationContainerStick.appendChild(gifDrumStick);
+gifDrumStick.classList.add("center")
+gifDrumStick.style.marginTop = "100px";
+
+
+//BONGO
+
+const gifBongo = document.createElement("img");
+gifBongo.src = "drumsticksgif.gif"; 
+animationContainerBongo.appendChild(gifBongo);
+gifBongo.classList.add("center")
+gifBongo.style.marginTop = "100px";
+
+
 
 
 
@@ -63,6 +96,8 @@ document.addEventListener('keydown', function(event) {
     kickScore = kickScore + 1;
     if (event.key === 'a' || event.key === 'A') {
         audio_kick_trap.play();
+        drumKitGifOn();
+
     } /* if (kickScore === 9) {
         guitar_sample.play();
         const guitarUpdate = document.createElement("h3");
@@ -71,14 +106,43 @@ document.addEventListener('keydown', function(event) {
         guitarUpdate.style.textAlign = "center"
         guitarUpdate.style.fontSize = "xx-large";
         guitarUpdate.style.marginTop = "200px";
-
+      
 
     } */
     //ANIMATION CONTROL
+    
 
 
 
   });
+  //FUNCTIONS FOR ANIMATION CHANGES
+
+  function drumKitGifOn(){
+    document.body.appendChild(animationContainerBongo); 
+    document.body.appendChild(animationContainerStick);
+
+    document.body.removeChild(animationContainerBongo); 
+    document.body.removeChild(animationContainerStick);
+    document.body.appendChild(animationContainerKit);
+  }
+
+  function drumStickGifOn(){
+    document.body.appendChild(animationContainerBongo); 
+    document.body.appendChild(animationContainerKit);
+
+    document.body.removeChild(animationContainerBongo); 
+    document.body.removeChild(animationContainerKit);
+    document.body.appendChild(animationContainerStick);
+  }
+
+  function bongoGifOn(){
+    document.body.appendChild(animationContainerStick); 
+    document.body.appendChild(animationContainerKit);
+
+    document.body.removeChild(animationContainerStick); 
+    document.body.removeChild(animationContainerKit);
+    document.body.appendChild(animationContainerBongo);
+  }
 
 
 
@@ -111,6 +175,7 @@ let audio_snare_trap = new Audio('snare_trap.wav');
 document.addEventListener('keydown', function(event) {
     if (event.key === 'd' || event.key === 'D') {
         audio_snare_trap.play();
+        drumStickGifOn();
     }
   });
 
@@ -174,5 +239,6 @@ let audio_crash_trap = new Audio('crash_trap.wav');
 document.addEventListener('keydown', function(event) {
     if (event.key === 'j' || event.key === 'J') {
         audio_crash_trap.play();
+        bongoGifOn();
     }
   });
