@@ -32,68 +32,6 @@ window.onclick = function (event) {
   }
 };
 
-//DRAG & DROP
-
-/* let trapDiv = document.createElement("div");
-let rockDiv = document.createElement("div");
-let caribbeanDiv = document.createElement("div");
-
-let selectedGenreDiv = document.createElement("div");
-
-trapDiv.setAttribute("draggable", "true");
-trapDiv.setAttribute("ondragstart", dragstart_handler(event));
-
-rockDiv.setAttribute("draggable", "true");
-rockDiv.setAttribute("ondragstart", dragstart_handler(event));
-
-caribbeanDiv.setAttribute("draggable", "true");
-caribbeanDiv.setAttribute("ondragstart", dragstart_handler(event));
-
-selectedGenreDiv.setAttribute("ondrop", drop_handler(event));
-selectedGenreDiv.setAttribute("ondragover", dragover_handler(event));
-
-document.body.appendChild(selectedGenreDiv);
-
-document.body.appendChild(trapDiv);
-document.body.appendChild(rockDiv);
-document.body.appendChild(caribbeanDiv);
-
-function dragstart_handler(ev) {
-  console.log("dragStart");
-  ev.currentTarget.style.border = "dashed";
-  ev.dataTransfer.setData("text", ev.target.id);
-  ev.effectAllowed = "copyMove";
-}
-
-function dragover_handler(ev) {
-  console.log("dragOver");
-  ev.currentTarget.style.background = "lightblue";
-  ev.preventDefault();
-}
-
-function drop_handler(ev) {
-  console.log("Drop");
-  ev.preventDefault();
-  var id = ev.dataTransfer.getData("text");
-  if (id == "src_move" && ev.target.id == "dest_move")
-    ev.target.appendChild(document.getElementById(id));
-
-  if (id == "src_copy" && ev.target.id == "dest_copy") {
-    var nodeCopy = document.getElementById(id).cloneNode(true);
-    nodeCopy.id = "newId";
-    ev.target.appendChild(nodeCopy);
-  }
-}
-
-function dragend_handler(ev) {
-  console.log("dragEnd");
-  // Restore source's border
-  ev.target.style.border = "solid black";
-  // Remove all of the drag data
-  ev.dataTransfer.clearData();
-}
- */
-
 //DRUM SAMPLES & STYLES
 
 let audio_kick = new Audio();
@@ -106,10 +44,11 @@ let audio_crash = new Audio();
 
 //OPTIONS
 
-const optionRock = document.getElementById("optionRock");
+const optionHipHop = document.getElementById("optionHipHop");
 const optionTrap = document.getElementById("optionTrap");
 const optionTribal = document.getElementById("optionTribal");
 const optionLoFi = document.getElementById("optionLoFi");
+const optionHouse = document.getElementById("optionHouse");
 
 optionTrap.addEventListener("click", () => {
   audio_kick = new Audio("kick_trap.wav");
@@ -119,8 +58,9 @@ optionTrap.addEventListener("click", () => {
   audio_hihat = new Audio("hihat_trap.wav");
 
   audio_crash = new Audio("crash_trap.wav");
-});
 
+  divAlert.style.display = "none";
+});
 
 optionLoFi.addEventListener("click", () => {
   audio_kick = new Audio("kick_lofi.wav");
@@ -130,6 +70,8 @@ optionLoFi.addEventListener("click", () => {
   audio_hihat = new Audio("hihat_lofi.wav");
 
   audio_crash = new Audio("crash_lofi.wav");
+
+  divAlert.style.display = "none";
 });
 
 optionTribal.addEventListener("click", () => {
@@ -140,13 +82,52 @@ optionTribal.addEventListener("click", () => {
   audio_hihat = new Audio("hihat_tribal.wav");
 
   audio_crash = new Audio("crash_tribal.wav");
+
+  divAlert.style.display = "none";
+});
+
+optionHipHop.addEventListener("click", () => {
+  audio_kick = new Audio("kick_hiphop.wav");
+
+  audio_snare = new Audio("snare_hiphop.wav");
+
+  audio_hihat = new Audio("hihat_hiphop.wav");
+
+  audio_crash = new Audio("crash_hiphop.wav");
+
+  divAlert.style.display = "none";
+});
+
+optionHouse.addEventListener("click", () => {
+  audio_kick = new Audio("kick_house.wav");
+
+  audio_snare = new Audio("snare_house.wav");
+
+  audio_hihat = new Audio("hihat_house.wav");
+
+  audio_crash = new Audio("crash_house.wav");
+
+  divAlert.style.display = "none";
 });
 
 // START !!!
 
 let dropDownMenu = document.querySelector(".dropbtn");
 
+let divAlert = document.createElement("div");
+divAlert.classList.add("alert");
+
+let spanAlert = document.createElement("span");
+spanAlert.classList.add("closebtn");
+
 startMenu.addEventListener("click", () => {
+  document.body.appendChild(divAlert);
+
+  divAlert.appendChild(spanAlert);
+  spanAlert.style.fontFamily = "GowaRegular";
+  spanAlert.style.color = "white";
+  spanAlert.innerHTML = `CHOOSE A GENRE`;
+
   let openingFill = new Audio("openingfill.wav");
   openingFill.play();
   document.body.removeChild(startDiv);
@@ -163,18 +144,19 @@ startMenu.addEventListener("click", () => {
   h1Title.style.textAlign = "center";
   h1Title.style.fontSize = "xxx-large";
 
-  //H2 ELEMENT
+  /*  //H2 ELEMENT
   const h2Title = document.createElement("h2");
   h2Title.innerHTML = "CHOOSE A GENRE";
   divElement.appendChild(h2Title);
   h1Title.style.fontSize = "xx-large";
-  h2Title.style.marginLeft = "790px"
+  h2Title.style.marginLeft = "790px" */
 
   //FOUR BUTTONS
 
   const imgDiv = document.createElement("div");
   document.body.appendChild(imgDiv);
   imgDiv.style.marginLeft = "600px";
+  imgDiv.id = "imgDiv";
 
   const textDiv = document.createElement("div");
   document.body.appendChild(textDiv);
@@ -279,6 +261,7 @@ startMenu.addEventListener("click", () => {
   buttonA.width = "100";
   buttonA.style.marginLeft = "-15px";
   buttonA.style.marginTop = "100px";
+  buttonA.style.opacity = "0.4";
 
   //BUTTON D - SNARE
 
@@ -297,6 +280,7 @@ startMenu.addEventListener("click", () => {
   buttonD.width = "100";
   buttonD.style.marginLeft = "50px";
   buttonD.style.marginTop = "100px";
+  buttonD.style.opacity = "0.4";
 
   //BUTTON G - HIHAT
 
@@ -315,6 +299,7 @@ startMenu.addEventListener("click", () => {
   buttonG.width = "100";
   buttonG.style.marginLeft = "50px";
   buttonG.style.marginTop = "100px";
+  buttonG.style.opacity = "0.4";
 
   //BUTTON J - CRASH
 
@@ -333,6 +318,7 @@ startMenu.addEventListener("click", () => {
   buttonJ.width = "100";
   buttonJ.style.marginLeft = "50px";
   buttonJ.style.marginTop = "100px";
+  buttonJ.style.opacity = "0.4";
 
   //KEYDOWN EVENTS
   document.addEventListener("keydown", function playAnything(event) {
@@ -340,6 +326,12 @@ startMenu.addEventListener("click", () => {
       case "d":
         audio_snare.play();
         drumStickGifOn();
+        buttonD.style.opacity = "1";
+        document.addEventListener("keyup", function playAnything(event) {
+          if (event.key.toLowerCase() === "d") {
+            buttonD.style.opacity = "0.4";
+          }
+        });
         document.addEventListener("keydown", function playAnything(event) {
           if (event.key.toLowerCase() === "d") {
             audio_snare.pause();
@@ -357,6 +349,12 @@ startMenu.addEventListener("click", () => {
       case "g":
         audio_hihat.play();
         bongoGifOn();
+        buttonG.style.opacity = "1";
+        document.addEventListener("keyup", function playAnything(event) {
+          if (event.key.toLowerCase() === "g") {
+            buttonG.style.opacity = "0.4";
+          }
+        });
         document.addEventListener("keydown", function playAnything(event) {
           if (event.key.toLowerCase() === "g") {
             audio_hihat.pause();
@@ -374,6 +372,12 @@ startMenu.addEventListener("click", () => {
       case "a":
         audio_kick.play();
         drumKitGifOn();
+        buttonA.style.opacity = "1";
+        document.addEventListener("keyup", function playAnything(event) {
+          if (event.key.toLowerCase() === "a") {
+            buttonA.style.opacity = "0.4";
+          }
+        });
         document.addEventListener("keydown", function playAnything(event) {
           if (event.key.toLowerCase() === "a") {
             audio_kick.pause();
@@ -392,6 +396,12 @@ startMenu.addEventListener("click", () => {
         console.log("UH");
         audio_crash.play();
         bongoGifOn();
+        buttonJ.style.opacity = "1";
+        document.addEventListener("keyup", function playAnything(event) {
+          if (event.key.toLowerCase() === "j") {
+            buttonJ.style.opacity = "0.4";
+          }
+        });
         document.addEventListener("keydown", function playAnything(event) {
           if (event.key.toLowerCase() === "j") {
             audio_crash.pause();
